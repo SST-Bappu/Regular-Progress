@@ -1,0 +1,47 @@
+{%extends "base.html"%}
+{%block title%}Add New Product{%endblock%}
+{%block content%}
+
+   <div class="order_menu">
+       <ul class="ul">
+           <li class="list1"> <a href="#">Add New Product</a></li>
+           <li class="list1"><a href="">New Order</a></li>
+       </ul>
+   </div>
+   
+<!--  Div for input form -->
+ <div class="wrapper">
+    <div class="tittle">
+        <p>Add New Product</p></div>
+    
+    <div class="input">
+        <div class="name">Name</div>
+        <div class="input_box">
+            <input type="text" autocomplete="off" required>
+        </div>
+        
+        <div class="name"><label for="Unit"></label> </div>
+        <select id="unit">
+            <option value="each">Each</option>
+            <option value="kg">Kg</option>
+        </select>
+        
+        
+        <div class="name">Price per unit</div>
+        <div class="input_box">
+            <input type="text" autocomplete="off" required>
+        </div>
+        
+        
+        
+    </div>
+   
+        <div class="action">
+            <input type="submit" value="Save">
+            <input type="submit" value="Close">
+        </div>
+    </div>
+     
+ </div>
+   
+{%endblock%}

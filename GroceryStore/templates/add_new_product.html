@@ -1,0 +1,40 @@
+{%extends "indexf.html"%}
+{%block title%}Add New Product{%endblock%}
+{%block content%}
+   
+<!--  Div for input form -->
+ <div class="jumbotron text-center" >
+     <div class="row">
+         <div class="col-md-4"></div>
+         <div class="col-md-4">
+        <h3> Add new products </h3>
+        <form action="#" method="POST">
+            <div >Product Name</div>
+            <input class="form-control" type="text" name="name" autocomplete="off" required>
+                 <label for="unit">Unit</label>
+                <select class="form-control"  id="unit" name="unit">
+                    {% for i, unit in data %}
+                    <option value="{{i}}">{{unit}}</option>
+                    {% endfor %}
+                </select>
+        
+        <div >Price per unit</div>    
+            <input class="form-control" name="price" autocomplete="off" required>
+            <hr/>
+            <input class="btn btn-success" type="submit" name="save" value="Save">
+            <!--<input class="btn btn-info" type="submit" name="reset" value="Reset">-->
+            <a class="btn btn-danger" href="{{url_for('index')}}" >close</a> 
+        
+    </form>
+</div>
+<div class="col-md-4"></div>
+</div>
+     
+ </div>
+   
+       
+     
+
+
+   
+{%endblock%}      

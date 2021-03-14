@@ -1,0 +1,2 @@
+1. Two Pointer Technique - Set two pointer at both end of the array. Move both and return when they crosses each other.
+2. Sliding Window - This technique shows how a nested for loop in some problems can be converted to a single for loop to reduce the time complexity.

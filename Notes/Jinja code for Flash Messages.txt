@@ -1,0 +1,25 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+
+-------------> With Category <--------------------------
+{% with messages = get_flashed_messages(category_filter=["error") %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+
+-------------> With Category(Alternative Option) <--------------------------
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for cat,msg in messages %}
+            <p>{{cat}}-{{msg}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
