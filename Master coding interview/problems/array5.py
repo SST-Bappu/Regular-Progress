@@ -25,7 +25,7 @@ class Solution:
 
 if __name__=="__main__":
     str="ab###d"
-    str2="abg#d"
+    str2="abg###d"
     x = list(str)
     x1 = list(str2)
     y1 = Solution()
