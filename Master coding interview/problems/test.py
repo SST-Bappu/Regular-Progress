@@ -1,4 +1,3 @@
-str = "abscvdde"
-str=list(str)
-str.pop(0)
-print(str)
+list=[2,3,4]
+list[0]=list.pop()
+print(list[0])
