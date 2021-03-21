@@ -10,7 +10,7 @@ connection=sql_connection.get_sql_connection()
 def index():
     global connection
     products = products_dao.get_all_products(connection)
-    return render_template("table2.html",data=products)
+    return render_template("index.html",data=products)
 
 @app.route("/delete_item/<string:id>")
 def delete_item(id):
@@ -18,11 +18,11 @@ def delete_item(id):
     products_dao.delete_data(connection,id)
     flash('Product Deleted','alert')
     return redirect(url_for("index"))
-@app.route("/new_order", methods=["POST","GET"])
+@app.route("/new_order")
 def new_order():
     global connection
     products = products_dao.get_all_products(connection)
-    return render_template("new_order.html",data=products)
+    return render_template("new_order.html")
 
 @app.route("/add_new_item", methods=["POST","GET"])
 def add_new_item():

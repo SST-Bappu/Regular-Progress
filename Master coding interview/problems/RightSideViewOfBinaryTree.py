@@ -1,6 +1,6 @@
 import BinaryTree
 import BST_to_array_BFS
-def RightSideView(root):
+def RightSideView(root): #Using Breadth First Search
     if not root:
         return []
     q = [root]
@@ -19,7 +19,14 @@ def RightSideView(root):
             count+=1
         result.append(temp.pop())
     return result
-
+def RightSideView_DFS(root,result=[],Level=1):
+    if not root:
+        return
+    if Level>len(result):
+        result.append(root.data)
+    RightSideView_DFS(root.right,result,Level+1)
+    RightSideView_DFS(root.left,result,Level+1)
+    return result
 if __name__=="__main__":
     list = [7,5,2,6,4,3,8,9]
     tree= BinaryTree.BinaryTree()
@@ -29,6 +36,7 @@ if __name__=="__main__":
     print(result)
     result = RightSideView(tree)
     print(result)
+    print(RightSideView_DFS(tree))
 
 
 

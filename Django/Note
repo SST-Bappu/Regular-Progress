@@ -1,0 +1,4 @@
+Django Virtual Environment activation command: 
+=> source filename/bin/activate
+ex.: source tmenv/bin/activate (Here "tmenv" is the filename where virtual environment was created)
+

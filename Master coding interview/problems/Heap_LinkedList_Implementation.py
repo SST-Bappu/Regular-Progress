@@ -1,6 +1,6 @@
 #Linked List Implementation
 import BinaryTree
-import BST_to_array_DFS
+import BST_to_array_BFS
 def InsertMinHeap(root,data):
     if not root.data:
         root.data = data
@@ -104,10 +104,10 @@ if __name__=="__main__":
     while(i<len(list)):
         InsertMinHeap_optimized(root,list[i])
         i+=1
-    result = BST_to_array_DFS.BST_DFS(root)
+    result = BST_to_array_BFS.BST_BFS(root)
     print(result)
     BinaryTree.PreOrderTraversal(root)
     print("")
     Remove_from_Heap(root)
-    result = BST_to_array_DFS.BST_DFS(root)
+    result = BST_to_array_BFS.BST_BFS(root)
     print(result)
