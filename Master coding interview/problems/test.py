@@ -1,3 +1,3 @@
-list=[2,3,4]
-list[0]=list.pop()
-print(list[0])
+list =[[0,1],[1,0],[2,4]]
+
+print(list)
