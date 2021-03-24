@@ -1,3 +1,4 @@
-list =[[0,1],[1,0],[2,4]]
-
-print(list)
+from collections import C
+str = "python"
+code = "daily"* len(str)
+print(code.count[code[-2]])
