@@ -1,4 +1,3 @@
-from collections import C
-str = "python"
-code = "daily"* len(str)
-print(code.count[code[-2]])
+Q = [[0,1]]
+print(Q[0][0])
+print(Q[0][1])
