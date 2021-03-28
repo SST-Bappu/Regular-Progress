@@ -1,0 +1,2 @@
+List Comprehension with counter and nested loop:
+AB = Counter([(a+b) for a in A for b in B])
