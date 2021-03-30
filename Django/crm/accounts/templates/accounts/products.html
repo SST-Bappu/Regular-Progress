@@ -1,4 +1,5 @@
 {%extends 'accounts/main.html'%}
+{%block title%}Products{%endblock%}
 {%block content%}
 <div class="row">
     <div class="col-md">
@@ -6,12 +7,22 @@
             <h5>Products</h5>
         </div>
         <div class="card card-body">
-            <table class="table">
+            <table class="table table-hover table-striped table-dark">
                 <tr>
+                    
                     <th>Products</th>
                     <th>Category</th>
                     <th>Price</th>
+                    
                 </tr>
+                {%for item in products%}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.price}}</td>
+                </tr>
+                {%endfor%}
+                
             </table>
         </div>
     </div>

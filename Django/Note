@@ -2,3 +2,16 @@ Django Virtual Environment activation command:
 => source filename/bin/activate
 ex.: source tmenv/bin/activate (Here "tmenv" is the filename where virtual environment was created)
 
+## To upload css file in django
+	{%load static%}
+	<link rel="stylesheet" type="text/css" href = "{% static '/css/main.css'%}">
+## To upload django media (picture/video)....
+	{%load static%}
+	<img src="{%static '/images/logo.png'%}">
+	
+	
+## Table Creating Process:
+	1. Write the table class in the models.py file
+	2. Then in the terminal, type command "python3 manage.py makemigrations"
+	3. Then agian type command "python3 manage.py migrate"
+	4. Finally go to the admin.py file to import and register the tables

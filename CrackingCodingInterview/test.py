@@ -1,3 +1,1 @@
-list=[]
-t = list.pop()
-print(t)
+print(False-False)
