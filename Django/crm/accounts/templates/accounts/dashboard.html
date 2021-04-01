@@ -1,8 +1,19 @@
 {%extends 'accounts/main.html'%}
 {%block title%}Home{%endblock%}
+
 {%block content%}
 {%include 'accounts/status.html'%}
 <br>
+
+
+<script >
+     
+     function myFunction(){
+         return confirm("Are you sure")
+     }
+
+
+</script>
 <div class="row">
     <div class="col-md-5">
         <h5>CUSTOMER:</h5>
@@ -29,7 +40,7 @@
         <h5>Last 5 Orders</h5>
         <br>
         <div class="card card-body">
-            <a class="btn btn-primary btn-sm btn-block" href="">Create Order</a>
+            <a class="btn btn-primary btn-sm btn-block" href="{%url 'createOrder'%}">Create Order</a>
             <table class="table table-sm table-hover">
                 <tr>
                     <th>Product</th>
@@ -43,8 +54,11 @@
                     <td>{{order.product.name}}</td>
                     <td>{{order.date}}</td>
                     <td>{{order.status}}</td>
-                    <td><a class="btn btn-sm btn-info" href="">Update</a></td>
-                    <td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
+                    <td><a class="btn btn-sm btn-info" href="{%url 'updateOrder' order.id%}">Update</a></td>
+                    <form action="{%url 'deleteOrder' order.id%}" method="POST"  onsubmit="return confirm('Are you sure that you want to remove an order?')">
+                        {% csrf_token %}
+                    <td><input type="submit" class="btn btn-sm btn-danger" value="Remove"/></td>
+                    </form>
                 </tr>
                 {%endfor%}
             </table>
