@@ -4,10 +4,10 @@
 <div class="row">
     <div class="col-md">
         <div class="card card-body">
-            <h5>Customer</h5>
+            <h5>{{customer.name}}</h5>
             <br>
             <a class="btn btn-outline-info btn-sm btn-block" href="">Update Customer</a>
-            <a class="btn btn-outline-danger btn-sm btn-block" href="">Delete Customer</a>
+            <a class="btn btn-outline-success btn-sm btn-block" href="{% url 'createMultipleOrder' customer.id %}">Place Order</a>
         </div>
     </div>
     <div class="col-md">
@@ -28,8 +28,8 @@
     <div class="col-md">
         <div class="card card-body">
             <form method="GET">
-                <btn class="btn btn-primary" type="submit">Search</btn>
-
+                {{filter.form}}
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
             
         </div>
@@ -53,8 +53,11 @@
                     <td>{{order.product.category}}</td>
                     <td>{{order.date}}</td>
                     <td>{{order.status}}</td>
-                    <td><a class="btn btn-sm btn-info" href="">Update</a></td>
-                    <td><a class="btn btn-sm btn-danger" href="">Remove</a></td>
+                    <td><a class="btn btn-sm btn-info" href="{%url 'updateOrderCus' order.id%}">Update</a></td>
+                    <form action="{%url 'deleteOrder' order.id%}" method="POST" onsubmit="return confirm('Are you sure you want to remove {{order.product.name}}?')">
+                        {% csrf_token %}
+                        <td><input type="submit" class="btn btn-sm btn-danger" value="Remove"/></td>
+                    </form>
                 </tr>
                 {%endfor%}
             </table>

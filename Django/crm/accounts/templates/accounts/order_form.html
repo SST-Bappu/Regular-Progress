@@ -2,10 +2,25 @@
 {%block title%}Order Form{%endblock%}
 {%load static%}
 {%block content%}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" name="Submit"> 
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6 col-center">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Update</h3>
+                    <div class="card-body">
 
-</form>
+                        <div class="form-group">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                {{form.as_p}}
+                                <input type="submit" class="btn btn-success" name="Submit"> 
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
 {%endblock%}

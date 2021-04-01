@@ -7,13 +7,21 @@
 
 
 <script >
-     
      function myFunction(){
          return confirm("Are you sure")
      }
-
-
 </script>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <form method="GET">
+                {{filter.form}}
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-5">
         <h5>CUSTOMER:</h5>
@@ -37,10 +45,9 @@
         </div>
     </div>
     <div class="col-md-7">
-        <h5>Last 5 Orders</h5>
+        <h5>Orders</h5>
         <br>
         <div class="card card-body">
-            <a class="btn btn-primary btn-sm btn-block" href="{%url 'createOrder'%}">Create Order</a>
             <table class="table table-sm table-hover">
                 <tr>
                     <th>Product</th>
@@ -55,7 +62,7 @@
                     <td>{{order.date}}</td>
                     <td>{{order.status}}</td>
                     <td><a class="btn btn-sm btn-info" href="{%url 'updateOrder' order.id%}">Update</a></td>
-                    <form action="{%url 'deleteOrder' order.id%}" method="POST"  onsubmit="return confirm('Are you sure that you want to remove an order?')">
+                    <form action="{%url 'deleteOrder' order.id%}" method="POST"  onsubmit="return confirm('Are you sure you want to remove {{order.product.name}}?')">
                         {% csrf_token %}
                     <td><input type="submit" class="btn btn-sm btn-danger" value="Remove"/></td>
                     </form>

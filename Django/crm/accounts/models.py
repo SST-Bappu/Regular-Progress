@@ -8,6 +8,8 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return "accounts/customer/%i/" %self.id
 class Tag(models.Model):
     name= models.CharField(max_length=200, null=True)
     def __str__(self):
