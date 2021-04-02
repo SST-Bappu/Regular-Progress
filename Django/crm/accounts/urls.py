@@ -8,5 +8,8 @@ urlpatterns = [
     path('updateOrder/<str:pk>/',views.updateOrder,name="updateOrder"),
     path('deleteOrder/<str:pk>/',views.deleteOrder,name="deleteOrder"),
     path('updateOrderCus/<str:pk>/',views.updateOrderCus,name="updateOrderCus"),
+    path('register/',views.register,name="registration"),
+    path('login/',views.Userlogin,name="login"),
+    path('logout',views.Userlogout,name='logout'),
     ]
  
