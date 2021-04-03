@@ -11,12 +11,16 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        {%if request.user.is_staff %}
         <a class="nav-item nav-link active" href="{%url 'home'%}">Dashboard <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="{%url 'products'%}">Products</a>
+        {%endif%}
       </div>
     </div>
+    
     <span class="user-msg">{{request.user}}</span>
-    <span><a class="btn btn-outline-danger" href="{% url 'logout' %}">Logout</a></span>
+    <span><a class="user-msg btn btn-outline-danger" href="{% url 'logout' %}">Logout</a></span>
   </nav>

@@ -10,6 +10,7 @@ urlpatterns = [
     path('updateOrderCus/<str:pk>/',views.updateOrderCus,name="updateOrderCus"),
     path('register/',views.register,name="registration"),
     path('login/',views.Userlogin,name="login"),
-    path('logout',views.Userlogout,name='logout'),
+    path('logout/',views.Userlogout,name='logout'),
+    path('userPage/',views.userPage,name='userPage'),
     ]
  
