@@ -21,8 +21,26 @@ if __name__=="__main__":
         [inf,-1,inf,-1],
         [0,-1,inf,inf]
     ]
+    matrix1 = [
+        [-1, inf,inf,inf,inf,inf, -1, -1, inf,0],
+        [inf, inf,-1,inf,inf,inf,inf, inf, inf,inf],
+        [-1, inf,-1,inf,inf,-1, -1, inf, -1,-1],
+        [inf,inf,inf,-1,-1, -1, inf, inf, -1,inf],
+        [inf,-1,-1,inf,inf, inf, inf, inf, inf,inf],
+        [inf,-1,-1,inf,inf, -1, inf, -1, -1,inf],
+        [inf,inf,inf,inf,-1, inf, inf, inf, inf,inf],
+        [-1,inf,-1,inf,-1, inf, -1, inf, inf,inf],
+        [-1,inf,-1,-1,inf, inf, inf, -1, -1,-1],
+        [inf,inf,inf,inf,inf, inf, inf, -1, -1,inf]
+    ]
     WallsandGates(matrix)
     for row in matrix:
         for item in row:
             print(item,end=" ")
+        print(" ")
+    WallsandGates(matrix1)
+    print("Shortest Path is = ",matrix1[9][0])
+    for row in matrix1:
+        for item in row:
+            print(item, end=" ")
         print(" ")
