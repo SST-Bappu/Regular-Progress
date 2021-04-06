@@ -1,5 +1,7 @@
-str="aabc"
-i=0
-while(i<len(str)):
-    print(str[i])
-    i+=1
+hash = {
+    1: 'a',
+    2: 'b'
+}
+str =""
+str+=hash[1]*5
+print(str)
