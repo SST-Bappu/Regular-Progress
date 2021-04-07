@@ -4,7 +4,7 @@
 {%include 'accounts/status.html'%}
 <div class="row">
     <div class="col-md">
-        <div class="card card-body">
+        <div class="card text-white text-center bg-secondary">
             <form method="GET">
                 {%csrf_token%}
                 {{filter.form}}
@@ -17,8 +17,8 @@
     <div class="col-md">
         <h5>Orders</h5>
         <br>
-        <div class="card card-body">
-            <table class="table table-sm table-hover">
+        <div class="card">
+            <table class="table table-hover table-striped table-dark">
                 <tr>
                     <th>Product</th>
                     <th>Date Ordered</th>

@@ -27,7 +27,7 @@ SECRET_KEY = '+bfzm=racm-)k(1r$ylw-%vc^-$^ie5jk#piu#hla*gk8z4%4x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -77,13 +77,24 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
+DATABASES={
+    'default':{
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
     }
 }
+#For postgresql
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DEMO_TEST',
+        'USER':'postgres',
+        'PASSWORD':'sst123',
+        'HOST':'localhost',
+        'PORT':'5432'
+    }
+}'''
 
 
 # Password validation
@@ -128,3 +139,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+
+
+#SMTP Configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER='sst.fpl39@gmail.com'
+EMAIL_HOST_PASSWORD ='sst2267787fpl'

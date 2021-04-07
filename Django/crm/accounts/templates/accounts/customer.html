@@ -6,15 +6,17 @@
         <div class="card card-body">
             <h5>{{customer.name}}</h5>
             <br>
-            <a class="btn btn-outline-info btn-sm btn-block" href="">Update Customer</a>
+            <a class="btn btn-outline-info btn-sm btn-block" href="{%url 'settings_admin' customer.id%}">Update Customer</a>
             <a class="btn btn-outline-success btn-sm btn-block" href="{% url 'createMultipleOrder' customer.id %}">Place Order</a>
         </div>
     </div>
     <div class="col-md">
-        <h5>Contact Information</h5>
-        <br>
-        <p>Email:{{customer.email}} </p>
-        <p>Phone: {{customer.phone}}</p>
+        <div class="card card-body">
+            <h5>Contact Information</h5>
+            <br>
+            <p>Email:{{customer.email}} </p>
+            <p>Phone: {{customer.phone}}</p>
+        </div>
     </div>
     <div class="col-md">
         <div class="card card-body">
@@ -26,7 +28,7 @@
 </div>
 <div class="row">
     <div class="col-md">
-        <div class="card card-body">
+        <div class="card text-white text-center bg-secondary">
             <form method="GET">
                 {{filter.form}}
                 <button class="btn btn-primary" type="submit">Search</button>
@@ -38,7 +40,7 @@
 <div class="row">
     <div class="col-md">
         <div class="card card-body">
-            <table class="table table-sm">
+            <table class="table table-hover table-striped table-dark">
                 <tr>
                     <th>Product</th>
                     <th>Category</th>
@@ -54,7 +56,7 @@
                     <td>{{order.date}}</td>
                     <td>{{order.status}}</td>
                     <td><a class="btn btn-sm btn-info" href="{%url 'updateOrderCus' order.id%}">Update</a></td>
-                    <form action="{%url 'deleteOrder' order.id%}" method="POST" onsubmit="return confirm('Are you sure you want to remove {{order.product.name}}?')">
+                    <form action="{%url 'deleteOrderCus' order.id%}" method="POST" onsubmit="return confirm('Are you sure you want to remove {{order.product.name}}?')">
                         {% csrf_token %}
                         <td><input type="submit" class="btn btn-sm btn-danger" value="Remove"/></td>
                     </form>

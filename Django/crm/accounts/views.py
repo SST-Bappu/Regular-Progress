@@ -27,7 +27,7 @@ def home(request):
     context={'orders':orders_filter,'customers':customers,'total_orders':total_orders,
              'delivered':delivered,'pending':pending,'filter':myFilter}
     return render(request,'accounts/dashboard.html',context)
-@unauthenticated_user
+#@unauthenticated_user
 def register(request):
     form = CreateUserForm()
     context ={'form':form}
@@ -81,6 +81,18 @@ def accountSettings(request):
     return render(request,'accounts/account_settings.html',context)
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
+def UserAccountSettingsbyAdmin(request,pk_test): #To give the admin the ability to change the user account settings if needed
+    customer = Customer.objects.get(id=pk_test)
+    #customer = cust.user
+    form = CustomerForm(instance=customer)
+    if request.method=='POST':
+        form = CustomerForm(request.POST,request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+    context = {'form':form}
+    return render(request,'accounts/account_settings.html',context)
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def products(request):
     product=Product.objects.all()
     return render(request,'accounts/products.html',{'products':product})
@@ -107,6 +119,17 @@ def userPage (request):
     context={'orders':orders,'customers':customers,'total_orders':total_orders,'delivered':delivered,
              'pending':pending,'filter':cusFilter}
     return render(request,'accounts/user.html',context)
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
+def AddProducts(request):
+    form = AddProductsForm()
+    if request.method=='POST':
+        form = AddProductsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    context = {'form':form}
+    return render(request,'accounts/addProducts.html',context)
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def createMultipleOrder(request,pk):
@@ -145,19 +168,21 @@ def deleteOrder(request,pk):
 @allowed_users(allowed_roles=['admin'])
 def updateOrderCus(request,pk):
     order = Order.objects.get(id=pk)
+    id = order.customer.id
     form = OrderForm(instance=order)
     if request.method =='POST':
         form = OrderForm(request.POST,instance=order)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('customer',pk_test=id)
     context={'form':form}
     return render(request,'accounts/order_form.html',context)
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def deleteOrderCus(request,pk):
     order = Order.objects.get(id=pk)
+    id = order.customer.id
     if request.method=="POST":
         order.delete()
-    return redirect('/')
+    return redirect('customer',pk_test=id)
 
