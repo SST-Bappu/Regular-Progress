@@ -148,4 +148,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='sst.fpl39@gmail.com'
-EMAIL_HOST_PASSWORD ='pass'
+EMAIL_HOST_PASSWORD ='###'
