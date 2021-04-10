@@ -3,12 +3,12 @@ def pathsWithSum(Tree,target,sum=0,count=0):
     if not Tree:
         return count
     sum+=Tree.data
+    if sum > target:
+        sum = 0
     if sum==target:
         count+=1
         sum = 0
-        #print(Tree.data)
-    elif sum>target:
-        sum=0
+
     count += pathsWithSum(Tree.left,target,sum)
     count += pathsWithSum(Tree.right,target,sum)
     return count
