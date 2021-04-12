@@ -30,5 +30,6 @@ def ShortestPath(Direction, start, end):
 
 
 if __name__=="__main__":
-    Direction = [[0,1,4],[0,2,2],[1,3,1],[2,4,5],[2,3,6],[3,5,4],[4,5,10]]
-    print(ShortestPath(Direction,0,5))
+    #Direction = [[0,1,4],[0,2,2],[1,3,1],[2,4,5],[2,3,6],[3,5,4],[4,5,10]]
+    Direction = [[1,2,2],[1,3,3],[3,4,4],[4,2,-6]]
+    print(ShortestPath(Direction,1,2))
