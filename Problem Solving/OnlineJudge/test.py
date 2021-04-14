@@ -1,7 +1,7 @@
-hash = {
-    1: 'a',
-    2: 'b'
-}
-str =""
-str+=hash[1]*5
-print(str)
+strs = ["flower","flow","flight"]
+i=0
+pre = []
+while i<3:
+    pre.append(strs[0][i])
+    i+=1
+print(len(strs[0]))
