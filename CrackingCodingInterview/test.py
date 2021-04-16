@@ -1,2 +1,3 @@
-import random
-print(random.randint(0,40))
+maze= [[True,True],[False,True]]
+maze1 = []
+print(len(maze))
