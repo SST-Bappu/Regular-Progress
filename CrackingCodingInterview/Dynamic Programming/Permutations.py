@@ -1,0 +1,2 @@
+def Permutations(s):
+    
