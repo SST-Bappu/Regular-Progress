@@ -1,37 +1,9 @@
-import copy
-def print_perms(string):
-    result = []
-    letter_count_map = build_freq_table(string)
-    print_perms_inner(letter_count_map, "", len(string), result)
-    return result
-
-
-# returns dictionary <string, integer>
-def build_freq_table(string):
-    letter_count_map = {}
-    for letter in string:
-        if letter not in letter_count_map:
-            letter_count_map[letter] = 0
-        letter_count_map[letter] += 1
-    return letter_count_map
-
-
-def print_perms_inner(letter_count_map, prefix, remaining, result):
-    # base case Permutation has been completed
-    if remaining == 0:
-        result.append(prefix)
-        return
-    # try remaining letter for next char, and generate remaining permutations
-    for character in letter_count_map:
-        count = letter_count_map[character]
-        if count > 0:
-            letter_count_map[character] -= 1
-            print_perms_inner(
-                letter_count_map, prefix + character, remaining - 1, result
-            )
-            letter_count_map[character] = count
-
-
+#This solution came from the previous permutations solution, here I just use set instead of list.
+#The problem is here I'm calculating all the possible permutations which is a bit tedious.
+#So in the next solution I'll try to ignore the additinoal solutions that may take part. For exaple, if my input is ="aac".As there are 3 letters this
+#solution will calculate 6 permutation I mean 6 strings. But if we look closer there only 3 permutations possible. So in the next solution we only take
+#those 3, ignoring all the possible 6.
+from collections import Counter
 def get_perms_2(string):
     result = set()
     get_perms_inner_2(" ", string, result)
@@ -50,6 +22,23 @@ def insert_char_at(c,word,i):
     first = word[:i]
     last = word[i:]
     return first+c+last
+#This is the optimized one
+def Permutations_dups_optimized(s):
+    char_count = Counter(s)
+    result = []
+    get_string(char_count,"",len(s),result)
+    return result
+
+def get_string(char_count,prefix,remaining,result):
+    if remaining==0:
+        result.append(prefix)
+        return
+    for char in char_count:
+        count = char_count[char]
+        if count>0:
+            char_count[char]-=1
+            get_string(char_count,prefix+char,remaining-1,result)
+        char_count[char] = count
 if __name__=="__main__":
-    s= "aac"
-    print(get_perms_2(s))
+    s= "aacc"
+    print(Permutations_dups_optimized(s))
