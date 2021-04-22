@@ -13,7 +13,6 @@ def coin_combinations(amount,coin_sizes,ways):
         return 0
     m = len(coin_sizes)
     if ways[m-1][amount]!=None:
-        print("Here we got one")
         return ways[m-1][amount]
     ways[m-1][amount] = coin_combinations(amount, coin_sizes[: m - 1],ways) + coin_combinations(
         amount - coin_sizes[m - 1], coin_sizes,ways)
@@ -29,11 +28,12 @@ def coin_combinations_iterative(amount, coin_sizes=None):
     for i in range(0, len(coin_sizes)):
         for j in range(coin_sizes[i], amount + 1):
             table[j] += table[j - coin_sizes[i]]
+        print(table)
     return table[amount]
 if __name__=="__main__":
     start = timeit.default_timer()
-    print(coins(100))
+    print(coins(30))
     print(timeit.default_timer()-start)
     start = timeit.default_timer()
-    print(coin_combinations_iterative(100))
+    print(coin_combinations_iterative(30))
     print(timeit.default_timer()-start)
