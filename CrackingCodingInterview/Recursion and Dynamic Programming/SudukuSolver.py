@@ -10,6 +10,7 @@ def suduku(board):
                 cols[j][val] = True
                 box = getBoxId(i,j)
                 boxId[box][val] = True
+
     return solver(rows,cols,boxId,board,0,0)
 
 def solver(rows,cols,boxId,board,r,c):
@@ -23,6 +24,7 @@ def solver(rows,cols,boxId,board,r,c):
                 rows[r][i] = True
                 cols[c][i] = True
                 boxId[box][i] = True
+
                 if c==len(board[0])-1:
                     if solver(rows,cols,boxId,board,r+1,0):
                         return True
@@ -35,12 +37,12 @@ def solver(rows,cols,boxId,board,r,c):
             board[r][c]=0
     else:
         if c == len(board[0])- 1:
-            solver(rows, cols, boxId, board, r + 1, 0)
+            return solver(rows, cols, boxId, board, r + 1, 0)
         else:
-            solver(rows, cols, boxId, board, r, c + 1)
+            return solver(rows, cols, boxId, board, r, c + 1)
 def getBoxId(row,col):
     cur_row = row//3
-    cur_col = (col//3)*2
+    cur_col = (col//3)*3
     return cur_col+cur_row
 def is_valid(rows,cols,boxId,box,r,c,val):
     if rows[r].get(val) or cols[c].get(val) or boxId[box].get(val):
