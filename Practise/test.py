@@ -1,3 +1,6 @@
-arr = [2,2]
-arr+=[1]
-print(arr)
+from collections import Counter
+str = "aaabbcded"
+count = Counter(str)
+print(count)
+for key in count:
+    print(count[key])
