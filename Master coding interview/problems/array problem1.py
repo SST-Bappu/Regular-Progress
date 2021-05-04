@@ -19,6 +19,5 @@ class solution:
 if __name__=="__main__":
     x = [1, 7, 3, 5, 9, 2]
     twoSum = solution()
-    while(twosum.person()):
     result=twoSum.target_index_optimized(11,x)
     print(result)
