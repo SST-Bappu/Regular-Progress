@@ -2,6 +2,7 @@
 {%load static%}
 
 {%block content%}
+
     <div class="row">
         <div class="col-lg-6" id ="form-wrapper">
             <div class="box-element">
@@ -56,9 +57,8 @@
                 <div class="cart-row">
                     <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}" alt=""></div>
                     <div style="flex:2"><p>{{item.product.name}}</p></div>
-                    <div style="flex:1"><p>{{item.product.price|floatformat:2}
-                        }</p></div>
-                    <div style="flex:1"><p>x{{item.product.quantity}}</p></div>
+                    <div style="flex:1"><p>{{item.product.price|floatformat:2}}</p></div>
+                    <div style="flex:1"><p>x {{item.quantity}}</p></div>
                 </div>
                 {%endfor%}
                 <h5>Items: {{order.get_cart_items}}</h5>
@@ -66,4 +66,10 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        const shipping = '{{order.shipping}}'
+        if (shipping=='False'){
+            document.getElementById('shipping-info').innerHTML=''
+        }
+        </script>
 {%endblock%}

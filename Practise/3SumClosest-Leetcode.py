@@ -1,20 +1,26 @@
 import sys
 def ThreeSumClosest(nums,target):
     nums.sort()
-    arrangements = []
     starting = dict()
-    closest = -sys.maxsize
+    closest = sys.maxsize
+    result = None
     for i in range(len(nums)):
         if starting.get(nums[i]):
             continue
         starting[nums[i]] = i
-        hash = dict()
-        target = -nums[i]
-        for j in range(i + 1, len(nums)):
-            if hash.get(nums[j]) is not None:
-                cur = [nums[i], hash[nums[j]], nums[j]]
-                if cur not in arrangements:
-                    arrangements.append(cur)
+        left = i+1
+        right = len(nums)-1
+        while left<right:
+            sum = nums[i]+nums[left]+nums[right]
+            if abs(target-sum)<closest:
+                closest = abs(target-sum)
+                result = sum
+            closest= min(closest,abs(target-sum))
+            if sum<=target:
+                left+=1
             else:
-                hash[target - nums[j]] = nums[j]
-    return arrangements
+                right-=1
+    return result
+if __name__=="__main__":
+    nums = [-1,2,1,-4]
+    print(ThreeSumClosest(nums,1))
