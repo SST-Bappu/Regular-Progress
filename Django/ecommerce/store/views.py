@@ -55,3 +55,6 @@ def updateItem(request):
     if order_item.quantity<=0:
         order_item.delete()
     return JsonResponse("Data is added",safe=False)
+def processOrder(request):
+    print("Data: ",request.body)
+    return JsonResponse("Payment has been completed",safe=False)
