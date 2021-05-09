@@ -1,5 +1,3 @@
-test = {}
-for i in range(5):
-    test[i]= True
-print(test)
+list = [1,2,3,4,5]
+print(sum(list+[6]))
 
