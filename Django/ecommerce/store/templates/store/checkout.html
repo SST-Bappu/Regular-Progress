@@ -107,6 +107,8 @@
     </div>
   </div>
 </div>
+
+
 <script type="text/javascript">
   const shipping = "{{order.shipping}}";
   if (shipping == "False" && user != "AnonymousUser") {
@@ -124,7 +126,7 @@
     document.getElementById("form-button").classList.add("hidden");
     document.getElementById("payment-info").classList.remove("hidden");
   });
-  document.getElementById("make-payment").addEventListener("click", function () {
+  document.getElementById("make-payment").addEventListener("click", function (e) {
         submitformData();
       });
   function submitformData() {
@@ -144,7 +146,7 @@
     if (user != 'AnonymousUser'){
         UserInfo.name = '{{user}}'
         UserInfo.email = '{{user.email}}'
-        UserInfo.total = '{{order.get_cart_total|floatformat:2}}'
+        UserInfo.total = '{{order.get_cart_total}}'
     }
     if (shipping == "False"){
         ShippingInfo.address = form.address.value

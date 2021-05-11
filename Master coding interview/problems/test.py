@@ -1,2 +1,4 @@
 list = [1,2,3,4,5,5]
-print(list[len(list)-1]==list[len(list)-2])
+list.clear()
+for j in range(2,0,-1):
+    print(j)
