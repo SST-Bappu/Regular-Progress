@@ -1,4 +1,4 @@
-dividend = 10
-divisor = 3
-
-print((dividend < 0) is (divisor < 0))
+from collections import Counter
+words=["bar","foo","the"]
+cnt = Counter(words)
+print(cnt)

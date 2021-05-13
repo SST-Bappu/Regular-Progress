@@ -23,5 +23,13 @@ def strstr(haystack,needle):
         else:
             i+=1
     return -1
+
+def strStr_opt(self, haystack: str, needle: str) -> int:
+    if not len(needle):
+        return 0
+    for i in range(len(haystack) - len(needle) + 1):
+        if haystack[i:i + len(needle)] == needle:
+            return i
+    return -1
 if __name__=="__main__":
     print(strstr("a","a"))
