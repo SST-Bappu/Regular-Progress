@@ -1,17 +1,20 @@
 def TrappingRainWater(height):
-    left = result = 0
-    while left<len(height):
-        right = left +1
-        cur = 0
-        while right<len(height) and height[left]>height[right]:
-            cur += height[left]-height[right]
-            right+=1
-        if right>=len(height):
-            left+=1
+    left = right = total = i = 0
+    j = len(height)-1
+    while i<=j:
+        if left<=right:
+            if height[i]<=left:
+                total+=left-height[i]
+            else:
+                left = height[i]
+            i+=1
         else:
-            result+=cur
-            left = right
-    return result
+            if height[j]<=right:
+                total += right-height[j]
+            else:
+                right = height[j]
+            j-=1
+    return total
 if __name__=="__main__":
-    height = [4,2,3]
+    height = [4,2,0,3,2,5]
     print(TrappingRainWater(height))

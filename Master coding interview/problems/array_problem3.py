@@ -18,7 +18,7 @@ class Solution:
         max_R = 0
         i = 0
         j = len(x)-1
-        for item in x: #while(i<=j)
+        while(i<=j):
             if max_L<=max_R:
                 if x[i]<=max_L:
                     total+=max_L-x[i]
