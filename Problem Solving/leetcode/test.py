@@ -1,3 +1,2 @@
-length =4
-for n in reversed(range(length)):
-    print(n)
+for i in reversed(range(1,4)):
+    print(i)
