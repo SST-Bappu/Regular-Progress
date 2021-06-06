@@ -1,2 +1,2 @@
-for i in reversed(range(1,4)):
-    print(i)
+nums = [1,4,5,7,2,6]
+print(min(nums))
