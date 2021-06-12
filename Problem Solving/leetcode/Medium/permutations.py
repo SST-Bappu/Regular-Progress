@@ -22,9 +22,11 @@ class permutations:
         return left+num+right
 
 if __name__=="__main__":
-    numb = [1,2,3]
+    numb = [1,2,3,4]
     sol = permutations()
-    print(sol.arrange(numb))
+    result = sol.arrange(numb)
+    print(len(result))
+
 
 
         
