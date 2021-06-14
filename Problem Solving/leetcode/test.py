@@ -1,6 +1,1 @@
-a = ""
-b = a
-k = 3
-a += str(k)
-print(len(a))
-print(b)
+print(2%3)

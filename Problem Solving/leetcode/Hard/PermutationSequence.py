@@ -1,25 +1,15 @@
-from collections import Counter
+import math
 class Permutations:
-    def permutationsII(self,n,k):
-        self.limit = k
-        self.nums = [i for i in range(1,n+1)]
-        self.cnt = Counter(self.nums)
-        self.arrangement = []
-        self.arrange('')
-        return self.arrangement
-    def arrange(self,cur):
-        if len(cur)== len(self.nums):
-            self.arrangement.append(cur)
-            return
-        for key in self.cnt:
-            if self.cnt[key]>0:
-                new = cur
-                new+=str(key)
-                self.cnt[key]-=1
-                self.arrange(new)
-                if len(self.arrangement)>=self.limit:
-                    return
-                self.cnt[key]+=1
+    def PermutationSequence(self,n,k):
+        nums = [i for i in range(1,n+1)]
+        permutation = ""
+        k-=1
+        while n>0:
+            n-=1
+            i, k = divmod(k,math.factorial(n))
+            permutation+=str(nums[i])
+            nums.pop(i)
+        return permutation
 if __name__=="__main__":
     sol = Permutations()
-    print(sol.permutationsII(4,2))
+    print(sol.PermutationSequence(4,4))

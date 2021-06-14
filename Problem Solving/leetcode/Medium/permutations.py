@@ -25,7 +25,7 @@ if __name__=="__main__":
     numb = [1,2,3,4]
     sol = permutations()
     result = sol.arrange(numb)
-    print(len(result))
+    print(result)
 
 
 
