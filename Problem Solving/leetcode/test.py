@@ -1,1 +1,4 @@
-print(2%3)
+s = "   home   "
+s= s.rstrip()
+print(s)
+print(len(s))
