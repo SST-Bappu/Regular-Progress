@@ -1,5 +1,3 @@
-s = [0,1]
-for i in range(3):
-    if i in s:
-        continue
-    print("It works")
+nums =[2,4,9,8,1,0]
+nums.sort()
+print(nums)
