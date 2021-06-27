@@ -1,4 +1,1 @@
-s = "dab"
-part = "abc"
-s = s.replace(part,"")
-print(s)
+print(30%24)
