@@ -1,4 +1,2 @@
-hash = {1:None,2:"Got"}
-
-if hash.get(1):
-    print("This is the way to check")
+for i in reversed(range(0,5)):
+    print(i)

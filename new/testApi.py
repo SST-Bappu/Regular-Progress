@@ -18,3 +18,7 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 data = response.json()
 for key in data:
     print(key)
+print("------")
+for key in data['earnings']:
+    print(key)
+print(data['details'])
