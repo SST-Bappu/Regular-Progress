@@ -126,3 +126,8 @@ STATIC_URL = '/static/'
 #Setting up ASGI Connection
 
 ASGI_APPLICATION = "ChatRoom.routing.application"
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}

@@ -1,5 +1,4 @@
-from collections import Counter
-nums = [1,2,2]
-cnt = Counter(nums)
-for key in cnt:
-    print(cnt[key])
+import math
+
+k = math.ceil(5/2)
+print(k)
