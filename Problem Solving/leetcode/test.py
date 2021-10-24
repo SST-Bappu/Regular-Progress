@@ -1,6 +1,3 @@
-s = "aabca"
-i=0
-for char in s:
-    if char == s[i]:
-        print(char)
-    i+=1
+list1 =[1,2,4]
+list2 =[1,2,4]
+print(list1==list2)
