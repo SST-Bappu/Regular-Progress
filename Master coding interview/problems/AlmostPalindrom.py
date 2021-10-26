@@ -21,7 +21,7 @@ class Solution:
         return True
 
 if __name__=="__main__":
-    str = "Race #=?a/ Car"
+    str = "Race a#/? Car"
     now = timeit.default_timer()
     str = str.lower()
     s = list(str)

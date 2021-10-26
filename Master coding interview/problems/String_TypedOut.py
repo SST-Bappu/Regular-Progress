@@ -9,7 +9,7 @@ class Solution:
                 if y1:
                     y1.pop()
             else:
-                y1.extend(x[i])
+                y1.append(x[i])
             i+=1
         return y1
     def cmp_str(self,x,x1):
