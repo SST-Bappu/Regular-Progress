@@ -17,24 +17,20 @@ def DetectCycle(node):
             return
 def FloydCycleDetection(node):
     slow = node
-    fast = node.next
+    fast = node
     while(True):
-        if slow.next == fast.next:
-            fast = fast.next
-            break
         slow = slow.next
-        fast = fast.next
-        fast = fast.next
+        fast = fast.next.next
         if (slow.next==None or fast.next==None):
             print("There's no Cycle")
             return
-    slow = node
-    while(True):
-        if slow.next == fast.next:
-            fast.next = None
-            return
+        if slow == fast:
+            slow = node
+            break
+    while(slow.next!=fast.next):
         slow = slow.next
         fast = fast.next
+    fast.next=None
 
 
 

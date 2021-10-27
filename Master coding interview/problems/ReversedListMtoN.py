@@ -47,7 +47,7 @@ if __name__=="__main__":
         curNode=curNode.next
     print("")
     m=2
-*    n=6
+    n=5
     curNode=listReverse(node,m,n)
     while (True):
         if curNode.next == None:

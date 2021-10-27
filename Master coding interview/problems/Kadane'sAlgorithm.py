@@ -21,3 +21,4 @@ def maxSumSubArray(list): #Kadane's algorithm to find Maximum sum of contiguous 
 if __name__=="__main__":
     list = [3,-1,5,6,-4,2]
     print(maxSubarray(list))
+    print(maxSumSubArray(list))

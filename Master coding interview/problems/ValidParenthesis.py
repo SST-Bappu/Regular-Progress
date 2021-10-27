@@ -38,9 +38,9 @@ def Solution2(str):
         else:
             last+=1
         c+=1
-    return True if len(str)==0 else False
+    return len(str)==0
 
 if __name__=="__main__":
-    str = "()[]{}"
-    #print(ValidParenthesis(str))
-    print(Solution2(str))
+    str = "()[]{"
+    print(ValidParenthesis(str))
+

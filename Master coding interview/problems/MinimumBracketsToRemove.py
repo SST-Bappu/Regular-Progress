@@ -26,9 +26,23 @@ def MinimumBrackets(str):
         str[HashTable.get(leftParen)]=" "
         leftParen-=1
     return "".join(str)
+def RemoveMinimunParenthesis(str): #Solution using Stack
+    str = list(str)
+    stack=[]
+    for i in range(len(str)):
+        if str[i]=='(':
+            stack.append(i)
+        elif str[i]==')' and len(stack):
+            stack.pop()
+        elif str[i]==')':
+            str[i]=''
+    while len(stack):
+        index = stack.pop()
+        str[index] = ''
+    return ''.join(str)
 if __name__=="__main__":
-    str = "(ab(c)d"
+    str = "(ab(c)d)"
     t1 = timeit.default_timer()
-    str = MinimumBrackets(str)
+    str = RemoveMinimunParenthesis(str)
     print(str)
     print(timeit.default_timer()-t1)
