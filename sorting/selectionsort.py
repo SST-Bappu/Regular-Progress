@@ -12,4 +12,6 @@ def SelectionSort(list):
     print(list)
 
 list = [14,33,27,10,35,19,42,44]
+print(list)
 SelectionSort(list)
+print(list)

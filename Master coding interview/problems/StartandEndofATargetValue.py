@@ -65,6 +65,6 @@ if __name__=="__main__":
     list = [1,1,3,5,6,6,6,7,8]
     #result = StartandEnd(list,4)
     #print(f"Start is = {result.left} and End is = {result.right}")
-    result = FindStartEnd(list,7)
+    result = FindStartEnd(list,6)
     print(f"Start is ={result[0]} and end is ={result[1]}")
 
