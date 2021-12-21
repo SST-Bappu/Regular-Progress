@@ -28,6 +28,7 @@ def BellmanFordAlgo(Direction,start):
     for key in pathWeights:
         if pathWeights[key]>max:
             max = pathWeights[key]
+    print(pathWeights)
     return max != inf
 
 if __name__=="__main__":

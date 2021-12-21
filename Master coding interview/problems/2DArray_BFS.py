@@ -13,7 +13,7 @@ def BFS_2DArray(matrix):
             values.append(matrix[r][c])
             Q.append([r-1,c])
             Q.append([r, c + 1])
-            Q.append([r + 1, r < 0 or r >= len(matrix) or c < 0 or c >= len(matrix[0]) or seen[r][c]])
+            Q.append([r + 1, c])
             Q.append([r, c + 1])
             seen[r][c] = 1
         count+=1

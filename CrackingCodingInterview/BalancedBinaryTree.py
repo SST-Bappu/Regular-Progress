@@ -22,3 +22,4 @@ if __name__=="__main__":
     BinaryTree.InOrderTraversal(Head)
     print("")
     print(checkBalance(Head))
+    BinaryTree.BFS(Head)

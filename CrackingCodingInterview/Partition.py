@@ -45,7 +45,12 @@ if __name__=="__main__":
     for i in range(1,len(list)):
         current.next=LinkedList(list[i])
         current=current.next
-    current = Partition(node,5)
+    current = node
     while(current):
         print(current.data,end="->")
         current=current.next
+    print()
+    current = Partition(node,5)
+    while (current):
+        print(current.data, end="->")
+        current = current.next

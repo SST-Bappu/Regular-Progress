@@ -8,3 +8,4 @@ def FindDuplicate(arr):
 if __name__=="__main__":
     arr = [1,2,3,6,3,6,1]
     FindDuplicate(arr)
+    print(arr)

@@ -20,12 +20,14 @@ def ShellSort(list):
                     if(list[k]>list[k+j]):
                         list[k],list[k+j] = list[k+j],list[k]
                     k-=j
-            i+=1
+            else:
+                i+=1
         print(f"Gap is = {j} and the list is = {list}")
         j-=1
 
 if __name__=="__main__":
     list = [21,38,29,17,4,25,11,32,9]
+    # list = [17,26,20,44,55,31,54,77,93]
     print(list)
     ShellSort(list)
     print(list)

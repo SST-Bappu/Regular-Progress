@@ -1,4 +1,5 @@
 from collections import deque
+#Every child will have link to its parent
 class BinaryTree:
     def __init__(self,data=None,parent=None):
         self.data = data

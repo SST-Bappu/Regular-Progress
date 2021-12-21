@@ -3,10 +3,7 @@ package main
 
 import(
     "fmt"
-    // "strings"
-    // "strconv"
-	// "bufio"
-	// "os"
+
 )
 var sum int=0
 func sumofSquares(arr []int, i int,n int){

@@ -5,14 +5,15 @@ class LinkedList:
 def ReverseList(Head):
     prev = None
     while(Head):
-        node = LinkedList(Head.data)
-        node.next = prev
-        prev = node
+        cur = LinkedList(Head.data)
+        cur.next = prev
+        prev = cur
         Head = Head.next
     return prev
 def Palindrome(head1,head2):
-    fast = head2.next
-    while(fast):
+    fast = head1
+
+    while(fast and fast.next):
         if head1.data != head2.data:
             return False
         head1=head1.next
@@ -28,8 +29,7 @@ def Palindrome_Stack(head): #Optimized
         head=head.next
         fast=fast.next.next
     if fast!=None:
-        .304
-    
+        print(head.data)
         head=head.next
     while(head):
         if head.data!=list.pop():
@@ -37,7 +37,8 @@ def Palindrome_Stack(head): #Optimized
         head = head.next
     return True
 if __name__=="__main__":
-    list = [1,2,1,2,1]
+    list = [1,2,1,2,2]
+    # list = [1,2,3,4,5]
     node = LinkedList(list[0])
     current = node
     for i in range(1,len(list)):
@@ -50,3 +51,4 @@ if __name__=="__main__":
         current = current.next
     print("")
     print(Palindrome_Stack(node))
+    print(Palindrome(node,nodeR))

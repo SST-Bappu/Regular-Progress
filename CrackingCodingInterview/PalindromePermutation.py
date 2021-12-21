@@ -2,6 +2,7 @@ from collections import Counter
 def PalindromePermut(str):
     cnt = Counter(str)
     chk = 0
+    print(cnt)
     l = len(str)
     for i in cnt:
         if cnt[i]%2!=0 and l%2==0:

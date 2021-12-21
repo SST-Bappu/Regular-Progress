@@ -1,3 +1,4 @@
+from collections import deque
 class BinaryTree:
     def __init__(self,data=None):
         self.data = data
@@ -46,6 +47,7 @@ def BFS(Head):
     h = MaximumDepth(Head)
     for i in range(1,h+1):
         TraverseLevelOrder(Head,i)
+        print()
 def TraverseLevelOrder(Head,Level):
     if Head==None:
         return
@@ -54,6 +56,23 @@ def TraverseLevelOrder(Head,Level):
     else:
         TraverseLevelOrder(Head.left,Level-1)
         TraverseLevelOrder(Head.right,Level-1)
+def BFS_with_deque(root):
+    if not root:
+        return
+    Q = deque()
+    Q.append(root)
+    while len(Q):
+        count = 0
+        n = len(Q)
+        while count<n:
+            current = Q.popleft()
+            print(current.data,end="->")
+            if current.left:
+                Q.append(current.left)
+            if current.right:
+                Q.append(current.right)
+            count+=1
+        print()
 def Remove(Head):
     if Head.left==None:
         return Head
@@ -87,10 +106,12 @@ if __name__=="__main__":
     while(i<len(list)):
         InsertNode(Head,list[i])
         i+=1
-    print("Maximum Depth is = ",MaximumDepth(Head))
-    InOrderTraversal(Head)
-    print("")
+    # print("Maximum Depth is = ",MaximumDepth(Head))
+    # InOrderTraversal(Head)
+    # print("")
     #RemoveEntry(Head,5)
     #print("Tree after Removing Data")
     BFS(Head)
+    print("BFS using deque")
+    BFS_with_deque(Head)
 

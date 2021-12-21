@@ -35,6 +35,6 @@ if __name__=="__main__":
     for item in list:
         insertion(tree,item)
     Display(tree)
-    result = FindNodes(tree,8,15)
+    result = FindNodes(tree,7,25)
     parent = CommonAnchestor(result[0],result[1])
     print("This is the first common anchestor between the nodes - ", parent.data)
