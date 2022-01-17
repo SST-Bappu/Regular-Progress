@@ -3739,6 +3739,7 @@ paths:
               $ref: '#/components/schemas/MemberRequest'
             example:
               name: abc
+
         required: true
       responses:
         '200':
@@ -6360,21 +6361,21 @@ paths:
               example:
                 companies: []
       deprecated: false
-  /associate/{companyId}:
+  /associate:
     post:
       tags:
         - Associate
       summary: Associate
       operationId: Associate
       parameters:
-        - name: companyId
-          in: path
-          description: ''
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 610dd278b7c95b20945cb87b
+        # - name: companyId
+        #   in: path
+        #   description: ''
+        #   required: true
+        #   style: simple
+        #   schema:
+        #     type: string
+        #     example: 610dd278b7c95b20945cb87b
         - name: companyId
           in: header
           description: ''
@@ -6607,14 +6608,14 @@ paths:
       summary: Associate List
       operationId: AssociateList
       parameters:
-        - name: companyId
-          in: path
-          description: ''
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 610dd278b7c95b20945cb87b
+        # - name: companyId
+        #   in: path
+        #   description: ''
+        #   required: true
+        #   style: simple
+        #   schema:
+        #     type: string
+        #     example: 610dd278b7c95b20945cb87b
         - name: companyId
           in: header
           description: ''
@@ -7117,13 +7118,22 @@ paths:
                 updatedAt: 2021-08-07T00:48:07.358Z
                 __v: 0
       deprecated: false
-  /projects/create:
-    post:
+
+  /taskStatus/:
+    get:
       tags:
-        - Project
-      summary: Project
-      operationId: Project
-      parameters:
+        - Task Status
+      summary: Status
+      operationId: getTaskstatus
+      parameters: 
+        - name: pid
+          in: query
+          description: ''
+          required: true
+          style: form
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d
         - name: companyId
           in: header
           description: ''
@@ -7131,27 +7141,10 @@ paths:
           style: simple
           schema:
             type: string
-            example: 610dd278b7c95b20945cb87b
-      requestBody:
-        description: ''
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectRequest'
-            example:
-              name: test
-              companyId: 610dd278b7c95b20945cb87b
-              departments:
-                - 61097ec9fb92be23587731b7
-              deadline: 12-12-12 12:12:12
-              color: 2
-              associates:
-                - _id: 610dd8949a229d319483184f
-                  size: 1
-        required: true
+            example: 610dd6152b0af61a0898e8d8
       responses:
         '201':
-          description: Created
+          description: ''
           headers:
             Vary:
               content:
@@ -7206,19 +7199,19 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                  example: '531'
+                  example: '253'
             ETag:
               content:
                 text/plain:
                   schema:
                     type: string
-                  example: W/"213-K2OEB7QKi7Z2AGLTLhIIWo/obsc"
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                  example: Sat, 07 Aug 2021 03:31:40 GMT
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
             Connection:
               content:
                 text/plain:
@@ -7228,33 +7221,1330 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: '#/components/schemas/JobExperience'
               example:
-                success: true
-                message: New project created
-                project:
-                  color: 2
-                  status: not-started
-                  optionalRole: []
-                  departments: []
-                  files: []
-                  rooms: []
-                  version: 0
-                  removed: false
-                  hasDeleted: false
-                  associate: []
-                  _id: 610dfe9b9a229d3194831874
-                  name: test
-                  concernedAdmin: 60fda8fe5eb94d256068813b
-                  account: 60fda8fe5eb94d256068813b
-                  deadline: 2012-12-12T06:12:12.000Z
-                  company: 610dd278b7c95b20945cb87b
-                  description: ''
-                  outline: ''
-                  createdAt: 2021-08-07T03:31:39.513Z
-                  updatedAt: 2021-08-07T03:31:39.513Z
+                data:
+                  color: #FFA800
+                  _id: 61e4e9dbcfceda2b86e48821
+                  name: current
+                  project: 61e4e9dbcfceda2b86e48817
+                  positionInBoard: 0
+                  account: 61e16da2cfceda2b86e44228
+                  createdAt: 2022-01-17T04:00:27.917Z
+                  updatedAt: 2022-01-17T04:00:27.917Z
                   __v: 0
       deprecated: false
+    post:
+      tags:
+        - Task Status
+      summary: Post Status
+      operationId: postTaskstatus
+      parameters: 
+        - name: pid
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobExperienceRequest'
+            example:
+              name: abc
+              positionInBoard: 10
+        required: true
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  _id: 61e50f2acfceda2b86e48a7c
+                  name: abc
+                  positionInBoard: 10
+      deprecated: false
+  /taskstatus/{taskstatusid}:
+    put:
+      tags:
+        - Task Status
+      summary: Update Status
+      operationId: updateTaskstatus
+      parameters: 
+        - name: taskstatusid
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+        - name: pid
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobExperienceRequest'
+            example:
+              name: abc
+              positionInBoard: 10
+        required: true
+      responses:
+        '201':
+          description: ' '
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  _id: 61e50f2acfceda2b86e48a7c
+                  name: abc
+                  positionInBoard: 10
+      deprecated: false
+
+
+  /labels/:
+    post:
+      tags:
+        - Labels
+      summary: Create Label
+      operationId: createLabel
+      parameters:
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobExperienceRequest'
+            example:
+              name: abc
+              color: red
+              description: abc
+              task: abcdef
+        required: true
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  _id: 61e50f2acfceda2b86e48a7c
+                  name: abc
+                  positionInBoard: 10
+      deprecated: false
+  /labels/create-for-company:
+    post:
+      tags:
+        - Labels
+      summary: Create labal for company
+      operationId: createLabelforcompany
+      parameters:
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobExperienceRequest'
+            example:
+              name: abc
+              color: red
+              description: abc
+        required: true
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                label:
+                    _id: 61e52aeda4b5fb779ff66eaf
+                    name: newpl2
+                    createdBy: 61e16da2cfceda2b86e44228
+                    color: brown
+                    description: abc
+                    company: 61e3914fcfceda2b86e453c2
+                    createdAt: 2022-01-17T08:38:05.357Z
+                    updatedAt: 2022-01-17T08:38:05.357Z
+                    __v: 0
+      deprecated: false
+  /labels/suggest:
+    get:
+      tags:
+        - Labels
+      summary: Suggest label
+      operationId: suggestlabel
+      parameters:
+        - name: keyword
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: abc
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      
+      responses:
+        '200':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  mongo_id: 61e525e4a4b5fb779ff66ea4
+                  name: newPl
+                  color: red
+                  company: 61e3914fcfceda2b86e453c2
+      deprecated: false
+
+
+  /labels/suggest-by-company:
+    get:
+      tags:
+        - Labels
+      summary: Suggest by company
+      operationId: suggestbycompany
+      parameters:
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  mongo_id: 61e525e4a4b5fb779ff66ea4
+                  name: newPl
+                  color: red
+                  company: 61e3914fcfceda2b86e453c2
+      deprecated: false
+
+  /labels/task/{taskid}:
+    get:
+      tags:
+        - Labels
+      summary: Task by task id 
+      operationId: taskbytaskid
+      parameters:
+        - name: taskid
+          in: path
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                tasklabels:
+                  _id: 61e53a1fa4b5fb779ff66ef7
+                  task: 61e53a1fa4b5fb779ff66ef5
+                  label: 
+                    _id: 61e525e4a4b5fb779ff66ea4
+                    name: newPl
+                    createdBy: 61e16da2cfceda2b86e44228
+                    color: red
+                    description: abc
+                    company: 61e3914fcfceda2b86e453c2                
+                createdAt: 2022-01-17T09:42:55.738Z
+                updatedAt: 2022-01-17T09:42:55.738Z
+                __v: 0
+      deprecated: false
+
+    post:
+      tags:
+        - Labels
+      summary: Task by task id 
+      operationId: posttaskbytaskid
+      parameters:
+        - name: taskid
+          in: path
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobExperienceRequest'
+            example:
+              label: 61e525e4a4b5fb779ff66ea4
+        required: true
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  mongo_id: 61e525e4a4b5fb779ff66ea4
+                  name: newPl
+                  color: red
+                  company: 61e3914fcfceda2b86e453c2
+      deprecated: false
+
+  /labels/{labelid}:
+    get:
+      tags:
+        - Labels
+      summary: Label by task id 
+      operationId: labelbylabelid
+      parameters:
+        - name: labelid
+          in: path
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+        
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                labels:
+                  _id: 61e525e4a4b5fb779ff66ea4
+                  name: newPl
+                  createdBy: 61e16da2cfceda2b86e44228
+                  color: red
+                  description: abc
+                  company: 61e3914fcfceda2b86e453c2
+                  createdAt: 2022-01-17T08:16:36.667Z
+                  updatedAt: 2022-01-17T08:16:36.667Z
+                  __v: 0
+      deprecated: false
+
+    put:
+      tags:
+        - Labels
+      summary: Label by label id 
+      operationId: putlabelbylabelid
+      parameters:
+        - name: labelid
+          in: path
+          description: ''
+          required: true
+          style: simple
+          explode: true
+          schema:
+            type: string
+            example: 610dd6152b0af61a0898e8d8
+      
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobExperienceRequest'
+            example:
+              name: abc
+              color: red
+              description: abc
+        required: true
+      
+      responses:
+        '201':
+          description: ''
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '253'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"fd-cL4IoxOpNnIJpFSZ1b0OQZuFiXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 28 Jul 2021 08:51:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/JobExperience'
+              example:
+                data:
+                  mongo_id: 61e525e4a4b5fb779ff66ea4
+                  name: newPl
+                  color: red
+                  company: 61e3914fcfceda2b86e453c2
+      deprecated: false
+
+
+  # /projects/create:
+  #   post:
+  #     tags:
+  #       - Project
+  #     summary: Project
+  #     operationId: Project
+  #     parameters:
+  #       - name: companyId
+  #         in: header
+  #         description: ''
+  #         required: true
+  #         style: simple
+  #         schema:
+  #           type: string
+  #           example: 610dd278b7c95b20945cb87b
+  #     requestBody:
+  #       description: ''
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/ProjectRequest'
+  #           example:
+  #             name: test
+  #             companyId: 610dd278b7c95b20945cb87b
+  #             departments:
+  #               - 61097ec9fb92be23587731b7
+  #             deadline: 12-12-12 12:12:12
+  #             color: 2
+  #             associates:
+  #               - _id: 610dd8949a229d319483184f
+  #                 size: 1
+  #       required: true
+  #     responses:
+  #       '201':
+  #         description: Created
+  #         headers:
+  #           Vary:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: X-HTTP-Method-Override, Accept-Encoding
+  #           X-DNS-Prefetch-Control:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: off
+  #           X-Frame-Options:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: SAMEORIGIN
+  #           Strict-Transport-Security:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: max-age=15552000; includeSubDomains
+  #           X-Download-Options:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: noopen
+  #           X-Content-Type-Options:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: nosniff
+  #           X-XSS-Protection:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: 1; mode=block
+  #           Access-Control-Allow-Origin:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: '*'
+  #           Content-Length:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: '531'
+  #           ETag:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: W/"213-K2OEB7QKi7Z2AGLTLhIIWo/obsc"
+  #           Date:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: Sat, 07 Aug 2021 03:31:40 GMT
+  #           Connection:
+  #             content:
+  #               text/plain:
+  #                 schema:
+  #                   type: string
+  #                 example: keep-alive
+  #         content:
+  #           application/json; charset=utf-8:
+  #             schema:
+  #               $ref: '#/components/schemas/Project'
+  #             example:
+  #               success: true
+  #               message: New project created
+  #               project:
+  #                 color: 2
+  #                 status: not-started
+  #                 optionalRole: []
+  #                 departments: []
+  #                 files: []
+  #                 rooms: []
+  #                 version: 0
+  #                 removed: false
+  #                 hasDeleted: false
+  #                 associate: []
+  #                 _id: 610dfe9b9a229d3194831874
+  #                 name: test
+  #                 concernedAdmin: 60fda8fe5eb94d256068813b
+  #                 account: 60fda8fe5eb94d256068813b
+  #                 deadline: 2012-12-12T06:12:12.000Z
+  #                 company: 610dd278b7c95b20945cb87b
+  #                 description: ''
+  #                 outline: ''
+  #                 createdAt: 2021-08-07T03:31:39.513Z
+  #                 updatedAt: 2021-08-07T03:31:39.513Z
+  #                 __v: 0
+  #     deprecated: false
   /projects/create-project:
     post:
       tags:
@@ -7275,12 +8565,29 @@ paths:
         content:
           application/json:
             schema:
+              type: object
+              properties: 
+                name: 
+                  type: string
+                companyId:
+                  type: string
+                statusList:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name: 
+                        type: string
+                      positionInBoard: 
+                        type: boolean
+
               $ref: '#/components/schemas/ProjectHomeRequest'
             example:
               name: test
               companyId: 610dd278b7c95b20945cb87b
-              deadline: 12-12-12 12:12:12
-              color: 2
+              statusList: 
+                name: Current
+                positionInBoard: 0
         required: true
       responses:
         '201':
@@ -7416,12 +8723,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProjectAddAssociateRequest'
+              type: object
+              properties:
+                size:
+                  type: integer
+                _id:
+                  type: array
+                  items: 
+                    type: string
+                
+              # $ref: '#/components/schemas/ProjectAddAssociateRequest'
             example:
-              name: test
-              companyId: 610dd278b7c95b20945cb87b
-              deadline: 12-12-12 12:12:12
-              color: 2
+              size: 20
+              _id: 61e0280ccfceda2b86e44081
         required: true
       responses:
         '403':
@@ -7509,18 +8823,18 @@ paths:
                 errors:
                   - message: Restricted
       deprecated: false
-  /projects/{companyId}/lists:
+  /projects:
     get:
       tags:
         - Project
-      summary: Project
+      summary: Project details
       operationId: GetProject
       parameters:
-        - name: companyId
-          in: path
+        - name: pid
+          in: query
           description: ''
           required: true
-          style: simple
+          style: form
           schema:
             type: string
             example: 610dd278b7c95b20945cb87b
@@ -8170,7 +9484,7 @@ paths:
               example:
                 message: 610dfe9b9a229d3194831874 accepted by 610dd278b7c95b20945cb87b
       deprecated: false
-  /projects/{companyId}/reject-requests:
+  /projects/{companyId}/reject-request:
     put:
       tags:
         - Project
@@ -8324,7 +9638,7 @@ paths:
                 success: true
                 message: Description updated
       deprecated: false
-  /projects:
+  /projects/:
     get:
       tags:
         - Project
@@ -10500,23 +11814,12 @@ paths:
             schema:
               $ref: '#/components/schemas/TaskRequest'
             example:
-              status: abc
-              columnId: 6115001bf8566d2d6856708f
-              boardId: 6112c5d951ad394120fffa72
+              status: 61e4e9dbcfceda2b86e48821
+              labels: ["61e525e4a4b5fb779ff66ea4"]
               dueDate: 12-12-12
               priority: '1'
               name: abc
-              assignmembers:
-                - role: employee
-                  designations: []
-                  removed: false
-                  _id: 6112cd824fa61c35b4a31d5f
-                  account:
-                    _id: 6112cd344fa61c35b4a31d4e
-                    email: ddd@gmail.com
-                    firstName: archibald
-                    lastName: kilback
-                    name: archibald-kilback-1
+              assignmembers: ["61e16da2cfceda2b86e44228"]
         required: true
       responses:
         '201':
@@ -10618,11 +11921,11 @@ paths:
                       lastName: osinski
                     assignedPerson: ''
       deprecated: false
-    get:
+    put:
       tags:
         - Task
-      summary: Task
-      operationId: GetTask
+      summary: Delete Task
+      operationId: DeleteTask
       parameters:
         - name: pid
           in: query
@@ -10952,6 +12255,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TaskDetails1'
               example:
+                message: Task updated
                 priority: 1
                 file: []
                 removed: false
@@ -11390,17 +12694,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TaskMemberRequest'
             example:
-              assignmembers:
-                - role: employee
-                  designations: []
-                  removed: false
-                  _id: 6112cd824fa61c35b4a31d5f
-                  account:
-                    _id: 6112cd344fa61c35b4a31d4e
-                    email: ddd@gmail.com
-                    firstName: archibald
-                    lastName: kilback
-                    name: archibald-kilback-1
+              assignmembers: ["6112cd824fa61c35b4a31d5f"]
+                
+                  
         required: true
       responses:
         '201':
@@ -11680,9 +12976,10 @@ paths:
             example:
               taskId: 6115070201ec38253c152696
               status: ccc
-              sourceColumnId: 6115001bf8566d2d6856708f
-              destinationColumnId: 6112c72e51ad394120fffa90
-              taskIndexOfDestinationColumn: '1'
+              sourceStatusId: 6115001bf8566d2d6856708f
+              destinationStatusId: 6112c72e51ad394120fffa90
+              taskIndexOfDestinationColumn: 1
+              
         required: true
       responses:
         '200':
