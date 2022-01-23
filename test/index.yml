@@ -15163,6 +15163,568 @@ paths:
                     position: ''
                   createdAt: 2021-08-16T10:10:42.875Z
       deprecated: false
+
+
+  /reports:
+    post:
+      tags:
+        - Report
+      summary: Report
+      operationId: Report
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+            example:
+              issueType: test
+              title: 611a3628136730229831fefa
+              issueDetails: Details about report
+              imageUrl: images/pics.img
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '219'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"db-X1rOvzAG1RT658ukND+gwF+v8YM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 16 Aug 2021 10:10:43 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Comment'
+              example:
+                message: "Report Received"
+      deprecated: false
+   
+  /subscriptions:
+    post:
+      tags:
+        - Subscription
+      summary: Subscription
+      operationId: Subscription
+      parameters:
+        - name: companyId
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd278b7c95b20945cb87b
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+            example:
+              plan: 5f0b0954d52a9705494c9242
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '219'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"db-X1rOvzAG1RT658ukND+gwF+v8YM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 16 Aug 2021 10:10:43 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Comment'
+              example:
+                message: "Subscription added"
+      deprecated: false
+
+  /subscriptions/{companyId}:
+    get:
+      tags:
+        - Subscription
+      summary: Subscription
+      operationId: getSubscription
+      parameters:
+        - name: companyId
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd278b7c95b20945cb87b
+      responses:
+        '201':
+          description: Created
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '219'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"db-X1rOvzAG1RT658ukND+gwF+v8YM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 16 Aug 2021 10:10:43 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Comment'
+              example:
+                isActive: true
+                version: 0
+                _id: 61e3914fcfceda2b86e453c4
+                company: 61e3914fcfceda2b86e453c2
+                plan: 
+                  _id: 60916807adfefe38726b628c
+                  name: trial
+                  maxTier: 20
+                  pricing: 0
+                  expireAt: "2022-04-16T03:30:23.140Z"
+                  createdAt: "2022-01-16T03:30:23.145Z"
+                  updatedAt: "2022-01-16T03:30:23.145Z"
+                  __v: 0
+      deprecated: false
+
+    put:
+      tags:
+        - Subscription
+      summary: Subscription
+      operationId: putSubscription
+      parameters:
+        - name: companyId
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd278b7c95b20945cb87b
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+            example:
+              plan: 5f0b0954d52a9705494c9242
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '219'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"db-X1rOvzAG1RT658ukND+gwF+v8YM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 16 Aug 2021 10:10:43 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Comment'
+              example:
+                 message: "Subscription plan changed for 61e3914fcfceda2b86e453c2"
+      deprecated: false
+
+  /subscriptions/{companyId}/renew-subscription:
+    put:
+      tags:
+        - Subscription
+      summary: Subscription
+      operationId: renewSubscription
+      parameters:
+        - name: companyId
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 610dd278b7c95b20945cb87b
+      responses:
+        '201':
+          description: Created
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: X-HTTP-Method-Override, Accept-Encoding
+            X-DNS-Prefetch-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: off
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: SAMEORIGIN
+            Strict-Transport-Security:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: noopen
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 1; mode=block
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '219'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"db-X1rOvzAG1RT658ukND+gwF+v8YM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 16 Aug 2021 10:10:43 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Comment'
+              example:
+                message: "Subscription extended"
+      deprecated: false
+
+
+
   /rooms:
     post:
       tags:
